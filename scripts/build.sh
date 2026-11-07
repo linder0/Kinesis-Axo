@@ -73,6 +73,9 @@ if [ -z "$signing_identity" ]; then
         ')
     fi
 fi
+# File Provider-backed folders can attach Finder metadata to copied bundles.
+# That metadata is not app content and prevents code signing on those Macs.
+xattr -dr com.apple.FinderInfo "$staged_app" 2>/dev/null || true
 codesign --force --options runtime --sign "$signing_identity" "$staged_app"
 codesign --verify --deep --strict "$staged_app"
 if $local_build; then

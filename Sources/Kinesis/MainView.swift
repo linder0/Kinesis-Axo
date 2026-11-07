@@ -3,7 +3,7 @@ import SwiftUI
 import KinesisCore
 
 enum AppPage: String, CaseIterable, Identifiable {
-    case overview, gestures, phone, stream, band, readings, cursor, write
+    case overview, gestures, phone, stream, fingers, band, readings, cursor, write
     var id: String { rawValue }
 
     /// Pages only developer mode shows.
@@ -19,6 +19,7 @@ extension Notification.Name {
 /// what you do with the band, one page at a time.
 struct MainView: View {
     @ObservedObject var model: BandModel
+    @StateObject private var fingerCalibration: FingerCalibrationController
     @State private var page: AppPage
     @AppStorage("appearance") private var appearance = AppAppearance.system
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -29,6 +30,7 @@ struct MainView: View {
     init(model: BandModel, page: AppPage = .overview, scrolls: Bool = true) {
         self.model = model
         self.scrolls = scrolls
+        _fingerCalibration = StateObject(wrappedValue: FingerCalibrationController(model: model))
         _page = State(initialValue: page)
     }
 
@@ -84,6 +86,7 @@ struct MainView: View {
                 case .gestures: GesturesPage(model: model)
                 case .phone: PhonePage(model: model, phone: model.phone)
                 case .stream: SensorStreamPage(model: model, stream: model.sensorStream)
+                case .fingers: FingerCalibrationPage(model: model, calibration: fingerCalibration)
                 case .band: BandPage(model: model)
                 case .readings: ReadingsPage(model: model)
                 case .cursor: CursorPage(model: model)

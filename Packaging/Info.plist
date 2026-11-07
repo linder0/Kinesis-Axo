@@ -8,8 +8,8 @@
     <key>CFBundleIconFile</key><string>Kinesis</string>
     <key>CFBundlePackageType</key><string>APPL</string>
     <key>CFBundleShortVersionString</key><string>0.5.0</string>
-    <key>CFBundleVersion</key><string>6.28</string>
-    <key>KinesisLocalPatch</key><string>local-sensor-stream-20261104</string>
+    <key>CFBundleVersion</key><string>6.28.1</string>
+    <key>KinesisLocalPatch</key><string>personal-finger-baselines-20261107</string>
     <key>LSMinimumSystemVersion</key><string>14.0</string>
     <key>NSHighResolutionCapable</key><true/>
     <key>NSBluetoothAlwaysUsageDescription</key><string>Kinesis connects to your neural band to receive gestures and control your Mac.</string>

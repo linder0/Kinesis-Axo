@@ -81,8 +81,8 @@ private struct EMGTraceView: View {
                     .font(KinesisType.micro).foregroundStyle(KinesisStyle.secondary)
             }
             Canvas { context, size in
-                let rowHeight = size.height / 8
-                let width = size.width - 30
+                let rowHeight = Double(size.height) / 8
+                let width = Double(size.width) - 30
                 let end = Double(readings.batches.last?.timestampUs ?? 0) + EMGBatch.durationUs
                 let start = end - 1_000_000
                 for channel in 0..<EMGBatch.channelCount {

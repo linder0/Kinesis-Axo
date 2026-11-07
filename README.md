@@ -5,6 +5,8 @@
 
 # kinesis
 
+This fork adds an experimental **fingers** page for personal EMG baselines: rest and five finger presses, three training rounds, and a separate test round. It stores a local profile and reports confusion and uncertainty before offering a visual recognition preview. See [finger calibration](docs/finger-calibration.md). Build this fork with `./scripts/build.sh --local`; the upstream download linked below does not include this feature.
+
 use your meta neural band to control your mac
 
 
